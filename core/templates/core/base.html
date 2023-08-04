@@ -1,0 +1,43 @@
+{% load menu %}
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="../core/n-icon.png">
+        <title>{% block title  %}{% endblock  %} | nextek</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+          <nav class="max-w-4l mx-auto  py-4  px-6  flex  items-center justify-between bg-[#4895ef]">
+            <div class="logo">
+                <a href="/" class="text-2xl text-white">Nextek</a>
+            </div>
+
+            <div class="search">
+                <form method="get" action="/search/">
+                    <input type="search" name="query" placeholder="Search">
+                    <button>Search</button>
+                </form>
+            </div>
+
+            <div class="menu flex space-x-4">
+                {% menu %}
+
+                {% if request.user.is_authenticated %}
+                       <a href="{% url 'myaccount' %}" class="text-white">My account</a>
+                       <a href="{% url 'my_store' %}" class="text-white">My store</a>
+                {% endif %}
+                
+            </div>
+          </nav>
+
+          <div class="max-w-4l mx-auto py-4  px-6">
+                {% block content  %}
+                {% endblock  %}
+          </div>
+
+
+
+    </body>
+</html>
