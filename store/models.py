@@ -18,10 +18,10 @@ class Product(models.Model):
     DELETED = 'deleted'
 
     STATUS_CHOICES = (
-        (DRAFT, 'draft'),
-        (WAITING_APPROVAL, 'waiting approval'),
-        (ACTIVE, 'active'),
-        (DELETED, 'deleted'),
+        (DRAFT, 'Draft'),
+        (WAITING_APPROVAL, 'Waiting approval'),
+        (ACTIVE, 'Active'),
+        (DELETED, 'Deleted'),
     )
 
     user = models.ForeignKey(User, related_name='products', on_delete=models.CASCADE) 

@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CART_SESSION_ID = 'cart'
+SESSION_COOKIE_AGE = 86400
+
 LOGIN_REDIRECT_URL = 'myaccount'
 LOGOUT_REDIRECT_URL = 'frontpage'
 
@@ -121,6 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
