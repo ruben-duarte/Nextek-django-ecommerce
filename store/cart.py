@@ -36,6 +36,8 @@ class Cart(object):
         
         if update_quantity:
             self.cart[product_id]['quantity'] += int(quantity)
+            if self.cart[product_id]['quantity'] == 0:
+                self.remove(product_id)
 
         self.save()
 
