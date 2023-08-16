@@ -60,6 +60,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'nextek.urls'
 
+WEBSITE_URL = 'http://127.0.0.1:8000/'
+
+STRIPE_PUB_KEY = 'pk_test_51Ndul8CoJUPeumsKFYB4gTw6KNuapKNMjJH6mYSO9WeLHiIHAMrEZXrteopm9jOtmXsvWoFgxbJi6SVbHPzBNWKB00UhG7ysC5'
+STRIPE_SECRET_KEY = 'sk_test_51Ndul8CoJUPeumsK9dWf89TQeyJeUwr6BdcOEW2p81LBYjwPdyaA5y3DefCBhMNgbnWBCNvUpKjSvzuEAKor3jPR00QlIWMVpe'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
