@@ -4,6 +4,18 @@
 {{ product.title }}
 {% endblock  %}
 
+{% block meta  %}
+<meta name="description" content="{{ product.description }}">
+<meta name="author" content="Ruben Duarte Dev">
+<meta property="og:title" content="Nextek | {{ product.title }}">
+<meta property="og:description" content=" {{ product.description }} ">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://nextek.com/{% url 'product_detail' product.category.slug product.slug %}">
+{% if  product.image %}
+<meta property="og:image" content:"http://nextek.com{{ product.image.url }}">
+{% endif %}
+{% endblock  %}
+
 {% block content %}
     {% if product.image %}
     <div class="image mb-4">
