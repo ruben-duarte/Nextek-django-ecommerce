@@ -9,16 +9,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% comment %} <link rel="icon" type="image/png" href="/n-icon.png"> {% endcomment %}
         <link rel="shortcut icon" type="image/png" href="{% static 'n-icon.png' %}"/>
+        <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+
         <title>{% block title  %}{% endblock  %} | nextek</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body class="bg-cyan-50">
-          <nav class="max-w-4l mx-auto  py-4  px-6  flex  items-center justify-between bg-[#4895ef]">
+    <body class="bg-cyan-600">
+
+        <header class="header flex justify-between px-14 py-0 font-serif">
+
+          <nav class="max-w-4l mx-auto  py-4  px-6  flex items-center justify-between bg-[#4895ef] nav absolute flex flex-col shadow-md w-[50%] h-full right-0 bg-[#4895ef] px-4 md:static md:h-auto md:w-auto md:flex-row md:shadow-none duration-500 " >
             <div class="logo">
-                <a href="/" class="text-2xl text-white">Nextek</a>
+                <a href="/" class="text-2xl text-blue">Nextek</a>
             </div>
 
-            <div class="search">
+            <button class="close-nav relative top-0 right-0 text-right text-2xl md:hidden">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+            <div class="nav-link search mb-2 md:mr-2  ml-2">
                 <form method="get" action="/search/" class="flex items-center space-x-4">
                     <input type="search" name="query" placeholder="Search" class="py-2 px-4 rounded-xl">
                     <button>
@@ -30,33 +44,65 @@
                 </form>
             </div>
 
-            <div class="menu flex items-center space-x-4">
+            <div class="nav-link menu flex items-center space-x-4 mb-2 md:mr-2 text-blue  ">
                 {% menu %}
 
-                <a href="{% url 'cart_view' %}" class="flex py-2 px-4 bg-teal-400 text-white rounded-xl  hover:bg-teal-700">
+                <a href="{% url 'cart_view' %}" class=" py-2 px-4 bg-teal-400 text-black rounded-xl  hover:bg-teal-700 mb-2 md:mr-2 ">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                       </svg>
                        ({{ cart | length }})</a>
 
+                       <a href="{% url 'login' %}" class="py-2 px-4 bg-teal-400 text-blue rounded-xl  hover:bg-teal-700 mb-2 md:mr-2 ">Login</a>       
+                       <a href="{% url 'signup' %}" class="py-2 px-4 bg-teal-400 text-blue rounded-xl  hover:bg-teal-700 mb-2 md:mr-2 ">SignUp</a>       
+
                 {% if request.user.is_authenticated %}
-                       <a href="{% url 'myaccount' %}" class="py-2 px-4 bg-teal-400 text-white rounded-xl  hover:bg-teal-700">My account</a>
+                       <a href="{% url 'myaccount' %}" class="py-2 px-4 bg-teal-400 text-blue rounded-xl  hover:bg-teal-700 mb-2 md:mr-2">My account</a>
 
                        {% if request.user.userprofile.is_vendor %}
-                       <a href="{% url 'my_store' %}" class="py-2 px-4 bg-teal-400 text-white rounded-xl hover:bg-teal-700">My store</a>
+                       <a href="{% url 'my_store' %}" class="py-2 px-4 bg-teal-400 text-blue rounded-xl hover:bg-teal-700 mb-2 md:mr-2">My store</a>
                        {% endif %}
                 {% endif %}
                 
             </div>
           </nav>
+          <button class="show-nav text-3xl cursor-pointer">
+            <i class="fa-solid fa-bars"></i>
+          </button>
 
+        </header>
           <div class="max-w-4l mx-auto py-4  px-6">
                 {% block content  %}
                 {% endblock  %}
           </div>
 
-          {% block scripts %}
-          {% endblock %}
+          {% comment %} {% block scripts %}
+          {% endblock %} {% endcomment %}
 
     </body>
+
+    {% block scripts %}
+
+    {% comment %} <script src="https://js.stripe.com/v3/"></script> {% endcomment %}
+
+    <script>
+        const showNav = document.querySelector(".show-nav");
+        const closeNav = document.querySelector(".close-nav");
+        const nav = document.querySelector(".nav");
+
+        closeNav.addEventListener("click", () => {
+        nav.classList.remove("right-0");
+        nav.classList.add("right-[-50%]");
+        });
+
+        showNav.addEventListener("click", () => {
+        nav.classList.remove("right-[-50%]");
+        nav.classList.add("right-0");
+        });
+
+
+    </script>
+
+
+    {% endblock %}
 </html>

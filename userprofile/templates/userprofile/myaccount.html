@@ -3,8 +3,19 @@
 {% block title  %} My account {% endblock  %}
 
 {% block content %}
-<h1 class="text-2xl">My account</h1>
+<h1 class="text-2xl">My account ✔</h1>
+<br>
 
+<p class="text-2xl">Welcome, {{ user.username}} ! 🎉</p>
+
+<hr>
+
+<p>Do you want to sell a product?</p>
+
+<a href="{% url 'add_product' %}" class=" mt-6 mb-4 inline-block py-4 px-8 bg-blue-400 text-white">Add a product</a> 
+<hr>
+<a href="{% url 'my_store' %}" class=" mt-6 mb-4 inline-block py-4 px-8 bg-blue-400 text-white">My store</a> 
+<hr>
 <a href="{% url 'logout' %}" class=" mt-6 inline-block py-4 px-8 bg-red-400 text-white">Log out</a>
 {% endblock  %}
 

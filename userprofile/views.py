@@ -50,6 +50,7 @@ def add_product(request):
             product.user = request.user
             product.slug = slug
             product.save()
+            
             messages.success(request, 'Product saved successfully')
 
             return redirect('my_store')

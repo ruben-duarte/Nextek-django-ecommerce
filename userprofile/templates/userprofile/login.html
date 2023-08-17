@@ -5,14 +5,14 @@
 {% endblock  %}
 
 {% block content  %}
-    <h1 class="text-2xl"> Login</h1>
+    <h1 class="text-xl bg-teal-200"> Nextek is the best option for your business</h1>
 
 
-<form method="post" action=".">
+<form method="post" action="." class="mt-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     {% csrf_token %}
 
     {{ form.as_p }}
 
-    <button class="py-4 px-8 bg-teal-800 text-white">Login</button>
+    <button class="mt-4 py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 text-xl">Login</button>
 </form>
 {% endblock  %}
