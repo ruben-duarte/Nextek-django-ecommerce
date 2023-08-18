@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-xl-(&&i6&_#^ou%le)ne!eupuv77l#ufh%m72w32$k)=$=xu95
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.nextek.com', 'nextek.com']
+ALLOWED_HOSTS = ['147.182.236.158']
 
 CART_SESSION_ID = 'cart'
 SESSION_COOKIE_AGE = 86400
@@ -60,7 +60,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'nextek.urls'
 
-WEBSITE_URL = 'http://nextek.com/'
+WEBSITE_URL = 'http://147.182.236.158/'
 
 STRIPE_PUB_KEY = 'pk_test_51Ndul8CoJUPeumsKFYB4gTw6KNuapKNMjJH6mYSO9WeLHiIHAMrEZXrteopm9jOtmXsvWoFgxbJi6SVbHPzBNWKB00UhG7ysC5'
 STRIPE_SECRET_KEY = 'sk_test_51Ndul8CoJUPeumsK9dWf89TQeyJeUwr6BdcOEW2p81LBYjwPdyaA5y3DefCBhMNgbnWBCNvUpKjSvzuEAKor3jPR00QlIWMVpe'
